@@ -14,13 +14,6 @@ struct MainView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Image("prographyLogo")
-                .padding()
-            
-            Rectangle()
-                .fill(.black)
-                .frame(width: UIScreen.main.bounds.width, height: 0.5)
-            
             TabView(selection: $viewModel.viewState.selection) {
                 PhotoListView()
                     .tag(viewModel.viewState.photoListTag)
