@@ -9,10 +9,10 @@ import Foundation
 
 public struct Photo: Decodable {
     
-    let id: String
-    let width: Int
-    let height: Int
-    let url: String
+    public let id: String
+    public let width: CGFloat
+    public let height: CGFloat
+    public let url: String
     
     enum CodingKeys: String, CodingKey {
         case id, width, height, urls
@@ -25,8 +25,8 @@ public struct Photo: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
-        width = try container.decode(Int.self, forKey: .width)
-        height = try container.decode(Int.self, forKey: .height)
+        width = try container.decode(CGFloat.self, forKey: .width)
+        height = try container.decode(CGFloat.self, forKey: .height)
         
         let urlsContainer = try container.nestedContainer(keyedBy: UrlsCodingKeys.self, forKey: .urls)
         url = try urlsContainer.decode(String.self, forKey: .thumb)
