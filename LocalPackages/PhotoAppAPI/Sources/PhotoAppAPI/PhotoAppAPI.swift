@@ -61,7 +61,7 @@ enum PhotoAppAPI {
             "Authorization": "Client-ID _bnOaDVLl1JPqr9rWKEy4OBm6306fSeobdZBUYhbib0"
         ]
         urlRequest.httpMethod = self.method
-        print(urlRequest.url)
+
         return urlRequest
     }
     
