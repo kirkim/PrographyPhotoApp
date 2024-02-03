@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */; };
-		FE334EC42B6E0D850050890A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC32B6E0D850050890A /* ContentView.swift */; };
+		FE334EC42B6E0D850050890A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC32B6E0D850050890A /* MainView.swift */; };
 		FE334EC62B6E0D860050890A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC52B6E0D860050890A /* Assets.xcassets */; };
 		FE334ECA2B6E0D860050890A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC92B6E0D860050890A /* Preview Assets.xcassets */; };
 		FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */ = {isa = PBXBuildFile; productRef = FED984DE2B6E2CC900E98661 /* PhotoAppAPI */; };
+		FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E22B6E366C00E98661 /* PhotoListView.swift */; };
+		FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E42B6E368600E98661 /* RandomPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FE334EBE2B6E0D850050890A /* PrographyPhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrographyPhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrographyPhotoAppApp.swift; sourceTree = "<group>"; };
-		FE334EC32B6E0D850050890A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FE334EC32B6E0D850050890A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FE334EC52B6E0D860050890A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrographyPhotoApp.entitlements; sourceTree = "<group>"; };
 		FE334EC92B6E0D860050890A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FED984DC2B6E215D00E98661 /* PhotoAppAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppAPI; path = ../LocalPackages/PhotoAppAPI; sourceTree = "<group>"; };
+		FED984E22B6E366C00E98661 /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
+		FED984E42B6E368600E98661 /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +91,7 @@
 		FE334ED12B6E14C00050890A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				FE334EC32B6E0D850050890A /* ContentView.swift */,
+				FED984E12B6E35D600E98661 /* MainView */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -135,6 +139,24 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FED984E02B6E35CF00E98661 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				FED984E22B6E366C00E98661 /* PhotoListView.swift */,
+				FED984E42B6E368600E98661 /* RandomPhotoView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		FED984E12B6E35D600E98661 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC32B6E0D850050890A /* MainView.swift */,
+				FED984E02B6E35CF00E98661 /* Subviews */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,8 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE334EC42B6E0D850050890A /* ContentView.swift in Sources */,
+				FE334EC42B6E0D850050890A /* MainView.swift in Sources */,
 				FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */,
+				FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */,
+				FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
