@@ -11,6 +11,7 @@
 		FE334EC42B6E0D850050890A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC32B6E0D850050890A /* ContentView.swift */; };
 		FE334EC62B6E0D860050890A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC52B6E0D860050890A /* Assets.xcassets */; };
 		FE334ECA2B6E0D860050890A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC92B6E0D860050890A /* Preview Assets.xcassets */; };
+		FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */ = {isa = PBXBuildFile; productRef = FED984DE2B6E2CC900E98661 /* PhotoAppAPI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FE334EC52B6E0D860050890A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrographyPhotoApp.entitlements; sourceTree = "<group>"; };
 		FE334EC92B6E0D860050890A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FED984DC2B6E215D00E98661 /* PhotoAppAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppAPI; path = ../LocalPackages/PhotoAppAPI; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,8 +39,10 @@
 		FE334EB52B6E0D850050890A = {
 			isa = PBXGroup;
 			children = (
+				FE334ED92B6E1BBD0050890A /* Packages */,
 				FE334EC02B6E0D850050890A /* PrographyPhotoApp */,
 				FE334EBF2B6E0D850050890A /* Products */,
+				FED984DD2B6E2CC900E98661 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +102,7 @@
 		FE334ED32B6E15250050890A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				FE334ED52B6E19CA0050890A /* LocalDB */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -107,6 +113,28 @@
 				FE334EC52B6E0D860050890A /* Assets.xcassets */,
 			);
 			path = ReSource;
+			sourceTree = "<group>";
+		};
+		FE334ED52B6E19CA0050890A /* LocalDB */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalDB;
+			sourceTree = "<group>";
+		};
+		FE334ED92B6E1BBD0050890A /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FED984DC2B6E215D00E98661 /* PhotoAppAPI */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FED984DD2B6E2CC900E98661 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +153,9 @@
 			dependencies = (
 			);
 			name = PrographyPhotoApp;
+			packageProductDependencies = (
+				FED984DE2B6E2CC900E98661 /* PhotoAppAPI */,
+			);
 			productName = PrographyPhotoApp;
 			productReference = FE334EBE2B6E0D850050890A /* PrographyPhotoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -399,6 +430,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FED984DE2B6E2CC900E98661 /* PhotoAppAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoAppAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE334EB62B6E0D850050890A /* Project object */;
 }
