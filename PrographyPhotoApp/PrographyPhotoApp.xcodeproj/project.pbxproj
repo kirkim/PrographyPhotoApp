@@ -16,6 +16,7 @@
 		FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E42B6E368600E98661 /* RandomPhotoView.swift */; };
 		FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E62B6E398A00E98661 /* MainViewModel.swift */; };
 		FED984EA2B6E41D500E98661 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E92B6E41D500E98661 /* PhotoListViewModel.swift */; };
+		FED984ED2B6E820000E98661 /* RandomPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984EC2B6E820000E98661 /* RandomPhotoViewModel.swift */; };
 		FED984F22B6E85B200E98661 /* RandomPhotoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984F12B6E85B200E98661 /* RandomPhotoCardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		FED984E42B6E368600E98661 /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
 		FED984E62B6E398A00E98661 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FED984E92B6E41D500E98661 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
+		FED984EC2B6E820000E98661 /* RandomPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewModel.swift; sourceTree = "<group>"; };
 		FED984F12B6E85B200E98661 /* RandomPhotoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				FED984E82B6E41C700E98661 /* PhotoListView */,
-				FED984E42B6E368600E98661 /* RandomPhotoView.swift */,
+				FED984EB2B6E81F000E98661 /* RandomPhotoView */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -178,6 +180,8 @@
 		FED984EB2B6E81F000E98661 /* RandomPhotoView */ = {
 			isa = PBXGroup;
 			children = (
+				FED984E42B6E368600E98661 /* RandomPhotoView.swift */,
+				FED984EC2B6E820000E98661 /* RandomPhotoViewModel.swift */,
 				FED984EE2B6E850A00E98661 /* Subviews */,
 			);
 			path = RandomPhotoView;
@@ -266,6 +270,7 @@
 			files = (
 				FED984F22B6E85B200E98661 /* RandomPhotoCardView.swift in Sources */,
 				FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */,
+				FED984ED2B6E820000E98661 /* RandomPhotoViewModel.swift in Sources */,
 				FED984EA2B6E41D500E98661 /* PhotoListViewModel.swift in Sources */,
 				FE334EC42B6E0D850050890A /* MainView.swift in Sources */,
 				FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */,
