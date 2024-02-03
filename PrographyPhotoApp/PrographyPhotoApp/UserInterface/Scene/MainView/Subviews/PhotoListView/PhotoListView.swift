@@ -19,6 +19,8 @@ struct PhotoListView: View {
     var body: some View {
         GeometryReader { geometryProxy in
             VStack {
+                NavigationBar()
+                
                 ScrollView {
                     VStack {
                         HStack {

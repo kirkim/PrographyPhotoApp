@@ -13,12 +13,14 @@ struct RandomPhotoView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
+            ZStack(alignment: .top) {
+                NavigationBar()
+                
                 ForEach(viewModel.viewState.photoStack, id: \.id) { photoCard in
                     RandomPhotoCardView(imageURL: photoCard.url)
-                        .padding(50)
+                        .padding(EdgeInsets(top: 100, leading: 50, bottom: 100, trailing: 50))
                         .shadow(radius: 5)
-                        .offset(x: photoCard.offsetWidth, y: 0)
+                        .offset(x: photoCard.offsetWidth, y: -abs(photoCard.offsetWidth))
                         .rotationEffect(.degrees(Double(photoCard.offsetWidth / geometry.size.width) * 25), anchor: .bottom)
                         .gesture(
                             DragGesture()
@@ -29,6 +31,7 @@ struct RandomPhotoView: View {
                                     viewModel.endDragGesture(by: gesture.translation)
                                 }
                         )
+                        .zIndex(0)
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
