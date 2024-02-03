@@ -52,10 +52,11 @@
 		FE334EC02B6E0D850050890A /* PrographyPhotoApp */ = {
 			isa = PBXGroup;
 			children = (
-				FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */,
-				FE334EC32B6E0D850050890A /* ContentView.swift */,
-				FE334EC52B6E0D860050890A /* Assets.xcassets */,
 				FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */,
+				FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */,
+				FE334ED32B6E15250050890A /* Service */,
+				FE334ED02B6E14A30050890A /* UserInterface */,
+				FE334ED42B6E15C80050890A /* ReSource */,
 				FE334EC82B6E0D860050890A /* Preview Content */,
 			);
 			path = PrographyPhotoApp;
@@ -67,6 +68,45 @@
 				FE334EC92B6E0D860050890A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FE334ED02B6E14A30050890A /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				FE334ED22B6E15100050890A /* Component */,
+				FE334ED12B6E14C00050890A /* Scene */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		FE334ED12B6E14C00050890A /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC32B6E0D850050890A /* ContentView.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FE334ED22B6E15100050890A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		FE334ED32B6E15250050890A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FE334ED42B6E15C80050890A /* ReSource */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC52B6E0D860050890A /* Assets.xcassets */,
+			);
+			path = ReSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
