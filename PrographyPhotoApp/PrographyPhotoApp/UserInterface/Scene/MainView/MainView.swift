@@ -27,7 +27,7 @@ struct MainView: View {
                 RandomPhotoView()
                     .tag(viewModel.viewState.randomPhotoTag)
             }
-            .tabViewStyle(.page)
+            .tabViewStyle(.page(indexDisplayMode: .never))
             HStack {
                 Spacer()
                 
@@ -49,8 +49,4 @@ struct MainView: View {
             .background(.black)
         }
     }
-}
-
-#Preview {
-    MainView()
 }

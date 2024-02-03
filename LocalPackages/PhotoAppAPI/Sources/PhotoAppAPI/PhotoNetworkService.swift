@@ -55,4 +55,18 @@ public final class PhotoNetworkService {
         return result
     }
     
+    public func loadImage(urlString: String) async -> Data? {
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        
+        guard let (data, _) = try? await URLSession.shared.data(for: urlRequest) else {
+            return nil
+        }
+
+        return data
+    }
+    
 }
