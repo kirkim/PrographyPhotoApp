@@ -10,19 +10,43 @@ import PhotoAppAPI
 
 struct MainView: View {
     
+    @ObservedObject var viewModel: MainViewModel = .init()
+    
     var body: some View {
-        VStack {
-            // MARK: 네비게이션 바
-            TabView {
+        VStack(spacing: 0) {
+            Image("prographyLogo")
+                .padding()
+            
+            Rectangle()
+                .fill(.black)
+                .frame(width: UIScreen.main.bounds.width, height: 0.5)
+            
+            TabView(selection: $viewModel.viewState.selection) {
                 PhotoListView()
-                    .tabItem {
-                        Image("house")
-                    }
+                    .tag(viewModel.viewState.photoListTag)
                 RandomPhotoView()
-                    .tabItem {
-                        Image("cards")
-                    }
+                    .tag(viewModel.viewState.randomPhotoTag)
             }
+            .tabViewStyle(.page)
+            HStack {
+                Spacer()
+                
+                Image("house")
+                    .renderingMode(.template)
+                    .foregroundStyle(viewModel.viewState.selection == .photoList ? .white : .gray)
+                    .onTapGesture { viewModel.tapTabItem(by: .photoList) }
+                
+                Spacer()
+                
+                Image("cards")
+                    .renderingMode(.template)
+                    .foregroundStyle(viewModel.viewState.selection == .randomPhoto ? .white : .gray)
+                    .onTapGesture { viewModel.tapTabItem(by: .randomPhoto) }
+                
+                Spacer()
+            }
+            .padding(.top, 20)
+            .background(.black)
         }
     }
 }

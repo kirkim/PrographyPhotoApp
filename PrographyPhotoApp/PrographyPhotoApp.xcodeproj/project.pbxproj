@@ -14,6 +14,7 @@
 		FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */ = {isa = PBXBuildFile; productRef = FED984DE2B6E2CC900E98661 /* PhotoAppAPI */; };
 		FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E22B6E366C00E98661 /* PhotoListView.swift */; };
 		FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E42B6E368600E98661 /* RandomPhotoView.swift */; };
+		FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E62B6E398A00E98661 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FED984DC2B6E215D00E98661 /* PhotoAppAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppAPI; path = ../LocalPackages/PhotoAppAPI; sourceTree = "<group>"; };
 		FED984E22B6E366C00E98661 /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
 		FED984E42B6E368600E98661 /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
+		FED984E62B6E398A00E98661 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				FE334EC32B6E0D850050890A /* MainView.swift */,
+				FED984E62B6E398A00E98661 /* MainViewModel.swift */,
 				FED984E02B6E35CF00E98661 /* Subviews */,
 			);
 			path = MainView;
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */,
 				FE334EC42B6E0D850050890A /* MainView.swift in Sources */,
 				FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */,
 				FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */,
