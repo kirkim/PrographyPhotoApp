@@ -10,7 +10,7 @@ import PhotoAppAPI
 
 struct MainView: View {
     
-    @ObservedObject var viewModel: MainViewModel = .init()
+    @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
         ZStack {
@@ -44,7 +44,11 @@ struct MainView: View {
             }
             if let photoID = viewModel.viewState.appearDetailView {
                 PhotoDetailView(
-                    viewModel: .init(photoID: photoID),
+                    viewModel: .init(dependency: .init(
+                        networkService: viewModel.dependency.networkSerview,
+                        bookmarkService: viewModel.dependency.bookmarkService,
+                        photoID: photoID
+                    )),
                     tapPopButton: {
                         viewModel.viewState.appearDetailView = nil
                 })

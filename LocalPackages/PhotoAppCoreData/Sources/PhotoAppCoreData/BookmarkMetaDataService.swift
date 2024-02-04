@@ -32,19 +32,18 @@ public final class BookmarkMetaDataService: CoreDataFeature {
     public init() {}
     
     public func find(by photoID: String) throws -> BookmarkData {
-        guard let result = try fetch()?.filter({ $0.photoID == photoID }).first else {
+        guard let result = try fetch().filter({ $0.photoID == photoID }).first else {
             throw CoreDataError.fetchFailure(#function)
         }
         
         return result
     }
     
-    public func fetch(id: UUID? = nil) throws -> [BookmarkData]? {
+    public func fetch(id: UUID? = nil) throws -> [BookmarkData] {
         return try viewContext.performAndWait {
             let fetchedResults = try fetchEntities(id: id, sortKeyPath: \Model.createdAt)
-            do {
-                return fetchedResults.compactMap({ $0.convertedBookmarkData })
-            }
+            
+            return fetchedResults.compactMap({ $0.convertedBookmarkData })
         }
     }
     

@@ -21,14 +21,18 @@ final class PhotoDetailViewModel: ObservableObject {
         var isBookmark: Bool = false
     }
     
+    struct Dependency {
+        let networkService: PhotoNetworkService
+        let bookmarkService: BookmarkMetaDataService
+        let photoID: String
+    }
+    
     @Published var viewState: ViewState? = nil
     
-    private let photoID: String
-    private let networkService = PhotoNetworkService()
-    private let bookmarkService = BookmarkMetaDataService()
+    private let dependency: Dependency
     
-    init(photoID: String) {
-        self.photoID = photoID
+    init(dependency: Dependency) {
+        self.dependency = dependency
         
         loadViewStateData()
     }
@@ -41,8 +45,8 @@ extension PhotoDetailViewModel {
         Task { [weak self] in
             if
                 let weakSelf = self,
-                let detailPhoto = await weakSelf.networkService.requestDetailPhoto(id: weakSelf.photoID),
-                let imageData = await weakSelf.networkService.loadImage(urlString: detailPhoto.url)
+                let detailPhoto = await weakSelf.dependency.networkService.requestDetailPhoto(id: weakSelf.dependency.photoID),
+                let imageData = await weakSelf.dependency.networkService.loadImage(urlString: detailPhoto.url)
             {
                 let existBookmarkData = weakSelf.existBookmarkData()
                 await weakSelf.updateViewState(by: .init(
@@ -58,7 +62,7 @@ extension PhotoDetailViewModel {
     }
     
     private func existBookmarkData() -> Bool {
-        let data = try? bookmarkService.find(by: photoID)
+        let data = try? dependency.bookmarkService.find(by: dependency.photoID)
         return data != nil
     }
     
@@ -73,10 +77,10 @@ extension PhotoDetailViewModel {
         }
         do {
             if viewState.isBookmark {
-                let removableItem = try bookmarkService.find(by: photoID)
-                try bookmarkService.remove(by: removableItem.id)
+                let removableItem = try dependency.bookmarkService.find(by: dependency.photoID)
+                try dependency.bookmarkService.remove(by: removableItem.id)
             } else {
-                try bookmarkService.save(by: .init(photoID: photoID))
+                try dependency.bookmarkService.save(by: .init(photoID: dependency.photoID))
             }
             updateViewState(by: existBookmarkData())
         } catch {

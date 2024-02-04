@@ -84,7 +84,3 @@ struct PhotoListView: View {
         }
     }
 }
-
-#Preview {
-    PhotoListView(viewModel: .init(appearDetailPhotoView: .init()))
-}
