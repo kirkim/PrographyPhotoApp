@@ -21,7 +21,7 @@ struct MainView: View {
                     RandomPhotoView(viewModel: viewModel.randomPhotoViewModel)
                         .tag(viewModel.viewState.randomPhotoTag)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
+//                .tabViewStyle(.page(indexDisplayMode: .never))
                 HStack {
                     Spacer()
                     

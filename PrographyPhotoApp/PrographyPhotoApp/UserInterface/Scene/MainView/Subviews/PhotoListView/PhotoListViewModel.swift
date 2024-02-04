@@ -6,6 +6,7 @@
 //
 
 import PhotoAppAPI
+import PhotoAppCoreData
 
 import Combine
 import UIKit.UIImage
@@ -24,25 +25,53 @@ final class PhotoListViewModel: ObservableObject {
     }
     
     struct ViewState {
+        var bookmarkGrid: [CellInfo] = []
         var leftGrid: [CellInfo] = []
         var rightGrid: [CellInfo] = []
-        var appearProgress: Bool = false
     }
     
     @Published var viewState: ViewState = .init()
     
     private let networkService: PhotoNetworkService = .init()
+    private let bookmarkService: BookmarkMetaDataService = .init()
     private var gridInfo: GridInfo = .init()
     
     let appearDetailPhotoView: PassthroughSubject<String, Never>
     
     init(appearDetailPhotoView: PassthroughSubject<String, Never>) {
         self.appearDetailPhotoView = appearDetailPhotoView
+        
+        loadBookmarkPhotos()
+        loadPhotos()
     }
     
 }
 
 extension PhotoListViewModel {
+    
+    func loadBookmarkPhotos() {
+        Task { [weak self] in
+            guard 
+                let weakSelf = self,
+                let bookmarkInfos = try? weakSelf.bookmarkService.fetch()
+            else { return }
+            
+            var bookmarkCellInfo: [CellInfo] = []
+            for info in bookmarkInfos {
+                if let urlString = await weakSelf.networkService.requestDetailPhoto(id: info.photoID)?.url,
+                   let imageData = await weakSelf.networkService.loadImage(urlString: urlString),
+                   let uiImage = UIImage(data: imageData)
+                {
+                    bookmarkCellInfo.append(.init(
+                        image: uiImage,
+                        ratio: .zero,
+                        photoID: info.photoID
+                    ))
+                }
+            }
+            await weakSelf.updateBookmarkInfos(by: bookmarkCellInfo)
+        }
+    }
     
     func loadPhotos() {
         Task { [weak self] in
@@ -85,6 +114,10 @@ extension PhotoListViewModel {
     
     func updateViewState(by newViewState: ViewState) {
         viewState = newViewState
+    }
+    
+    func updateBookmarkInfos(by bookmarkInfos: [CellInfo]) {
+        viewState.bookmarkGrid = bookmarkInfos
     }
     
     func tapItem(by info: CellInfo) {

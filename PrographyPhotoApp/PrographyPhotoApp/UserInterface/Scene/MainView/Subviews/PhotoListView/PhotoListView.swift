@@ -18,17 +18,41 @@ struct PhotoListView: View {
     
     var body: some View {
         GeometryReader { geometryProxy in
-            VStack {
+            VStack(alignment: .leading, spacing: 20) {
                 NavigationBar()
                 
-                ScrollView {
+                Text("북마크")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(viewModel.viewState.bookmarkGrid, id: \.image) { data in
+                            Image(uiImage: data.image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: geometryProxy.size.height / 5)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .onTapGesture {
+                                    viewModel.tapItem(by: data)
+                                }
+                        }
+                    }
+                }
+                
+                
+                Text("최신 이미지")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack {
-                        HStack {
+                        HStack(spacing: 10) {
                             VStack {
                                 ForEach(viewModel.viewState.leftGrid, id: \.image) { data in
                                     Image(uiImage: data.image)
-                                        .frame(width: geometryProxy.size.width / 2, height: (geometryProxy.size.width / 2) * data.ratio)
-                                        .clipped()
+                                        .frame(width: geometryProxy.size.width / 2 - 15, height: (geometryProxy.size.width / 2) * data.ratio)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .onTapGesture {
                                             viewModel.tapItem(by: data)
                                         }
@@ -39,8 +63,8 @@ struct PhotoListView: View {
                             VStack {
                                 ForEach(viewModel.viewState.rightGrid, id: \.image) { data in
                                     Image(uiImage: data.image)
-                                        .frame(width: geometryProxy.size.width / 2, height: (geometryProxy.size.width / 2) * data.ratio)
-                                        .clipped()
+                                        .frame(width: geometryProxy.size.width / 2 - 15, height: (geometryProxy.size.width / 2) * data.ratio)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .onTapGesture {
                                             viewModel.tapItem(by: data)
                                         }
@@ -49,10 +73,6 @@ struct PhotoListView: View {
                             }
                             
                         }
-                        if viewModel.viewState.appearProgress {
-                            ProgressView()
-                                .frame(width: 100, height: 100)
-                        }
                     }
                 }
                 .simultaneousGesture(
@@ -60,9 +80,7 @@ struct PhotoListView: View {
                         viewModel.calculateScrollViewPosition(by: $0.translation.height)
                     }))
             }
-            .onAppear {
-                viewModel.loadPhotos()
-            }
+            .padding(.horizontal, 10)
         }
     }
 }
