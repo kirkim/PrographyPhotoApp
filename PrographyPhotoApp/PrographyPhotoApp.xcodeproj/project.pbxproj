@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */; };
+		FE334EC42B6E0D850050890A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC32B6E0D850050890A /* MainView.swift */; };
+		FE334EC62B6E0D860050890A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC52B6E0D860050890A /* Assets.xcassets */; };
+		FE334ECA2B6E0D860050890A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC92B6E0D860050890A /* Preview Assets.xcassets */; };
+		FED1A75D2B6F0310008C47DD /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A75C2B6F0310008C47DD /* NavigationBar.swift */; };
+		FED1A75F2B6F0AD8008C47DD /* PhotoAppCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = FED1A75E2B6F0AD8008C47DD /* PhotoAppCoreData */; };
+		FED1A7622B6F0E3C008C47DD /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */; };
+		FED1A7642B6F0E4A008C47DD /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */; };
+		FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */ = {isa = PBXBuildFile; productRef = FED984DE2B6E2CC900E98661 /* PhotoAppAPI */; };
+		FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E22B6E366C00E98661 /* PhotoListView.swift */; };
+		FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E42B6E368600E98661 /* RandomPhotoView.swift */; };
+		FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E62B6E398A00E98661 /* MainViewModel.swift */; };
+		FED984EA2B6E41D500E98661 /* PhotoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E92B6E41D500E98661 /* PhotoListViewModel.swift */; };
+		FED984ED2B6E820000E98661 /* RandomPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984EC2B6E820000E98661 /* RandomPhotoViewModel.swift */; };
+		FED984F22B6E85B200E98661 /* RandomPhotoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984F12B6E85B200E98661 /* RandomPhotoCardView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FE334EBE2B6E0D850050890A /* PrographyPhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrographyPhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrographyPhotoAppApp.swift; sourceTree = "<group>"; };
+		FE334EC32B6E0D850050890A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FE334EC52B6E0D860050890A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrographyPhotoApp.entitlements; sourceTree = "<group>"; };
+		FE334EC92B6E0D860050890A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FE334ED82B6E1BB10050890A /* PhotoAppCoreData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppCoreData; path = ../LocalPackages/PhotoAppCoreData; sourceTree = "<group>"; };
+		FED1A75C2B6F0310008C47DD /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
+		FED984DC2B6E215D00E98661 /* PhotoAppAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppAPI; path = ../LocalPackages/PhotoAppAPI; sourceTree = "<group>"; };
+		FED984E22B6E366C00E98661 /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
+		FED984E42B6E368600E98661 /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
+		FED984E62B6E398A00E98661 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FED984E92B6E41D500E98661 /* PhotoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewModel.swift; sourceTree = "<group>"; };
+		FED984EC2B6E820000E98661 /* RandomPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewModel.swift; sourceTree = "<group>"; };
+		FED984F12B6E85B200E98661 /* RandomPhotoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoCardView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE334EBB2B6E0D850050890A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FED1A75F2B6F0AD8008C47DD /* PhotoAppCoreData in Frameworks */,
+				FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE334EB52B6E0D850050890A = {
+			isa = PBXGroup;
+			children = (
+				FE334ED92B6E1BBD0050890A /* Packages */,
+				FE334EC02B6E0D850050890A /* PrographyPhotoApp */,
+				FE334EBF2B6E0D850050890A /* Products */,
+				FED984DD2B6E2CC900E98661 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FE334EBF2B6E0D850050890A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EBE2B6E0D850050890A /* PrographyPhotoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE334EC02B6E0D850050890A /* PrographyPhotoApp */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */,
+				FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */,
+				FE334ED02B6E14A30050890A /* UserInterface */,
+				FE334ED42B6E15C80050890A /* ReSource */,
+				FE334EC82B6E0D860050890A /* Preview Content */,
+			);
+			path = PrographyPhotoApp;
+			sourceTree = "<group>";
+		};
+		FE334EC82B6E0D860050890A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC92B6E0D860050890A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FE334ED02B6E14A30050890A /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				FE334ED22B6E15100050890A /* Component */,
+				FE334ED12B6E14C00050890A /* Scene */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
+		FE334ED12B6E14C00050890A /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				FED984E12B6E35D600E98661 /* MainView */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		FE334ED22B6E15100050890A /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				FED1A75C2B6F0310008C47DD /* NavigationBar.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		FE334ED42B6E15C80050890A /* ReSource */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC52B6E0D860050890A /* Assets.xcassets */,
+			);
+			path = ReSource;
+			sourceTree = "<group>";
+		};
+		FE334ED92B6E1BBD0050890A /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				FED984DC2B6E215D00E98661 /* PhotoAppAPI */,
+				FE334ED82B6E1BB10050890A /* PhotoAppCoreData */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FED1A7602B6F0E2D008C47DD /* PhotoDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */,
+				FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */,
+			);
+			path = PhotoDetailView;
+			sourceTree = "<group>";
+		};
+		FED984DD2B6E2CC900E98661 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FED984E02B6E35CF00E98661 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				FED1A7602B6F0E2D008C47DD /* PhotoDetailView */,
+				FED984E82B6E41C700E98661 /* PhotoListView */,
+				FED984EB2B6E81F000E98661 /* RandomPhotoView */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		FED984E12B6E35D600E98661 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				FE334EC32B6E0D850050890A /* MainView.swift */,
+				FED984E62B6E398A00E98661 /* MainViewModel.swift */,
+				FED984E02B6E35CF00E98661 /* Subviews */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		FED984E82B6E41C700E98661 /* PhotoListView */ = {
+			isa = PBXGroup;
+			children = (
+				FED984E22B6E366C00E98661 /* PhotoListView.swift */,
+				FED984E92B6E41D500E98661 /* PhotoListViewModel.swift */,
+			);
+			path = PhotoListView;
+			sourceTree = "<group>";
+		};
+		FED984EB2B6E81F000E98661 /* RandomPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				FED984E42B6E368600E98661 /* RandomPhotoView.swift */,
+				FED984EC2B6E820000E98661 /* RandomPhotoViewModel.swift */,
+				FED984EE2B6E850A00E98661 /* Subviews */,
+			);
+			path = RandomPhotoView;
+			sourceTree = "<group>";
+		};
+		FED984EE2B6E850A00E98661 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				FED984F12B6E85B200E98661 /* RandomPhotoCardView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE334EBD2B6E0D850050890A /* PrographyPhotoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE334ECD2B6E0D860050890A /* Build configuration list for PBXNativeTarget "PrographyPhotoApp" */;
+			buildPhases = (
+				FE334EBA2B6E0D850050890A /* Sources */,
+				FE334EBB2B6E0D850050890A /* Frameworks */,
+				FE334EBC2B6E0D850050890A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PrographyPhotoApp;
+			packageProductDependencies = (
+				FED984DE2B6E2CC900E98661 /* PhotoAppAPI */,
+				FED1A75E2B6F0AD8008C47DD /* PhotoAppCoreData */,
+			);
+			productName = PrographyPhotoApp;
+			productReference = FE334EBE2B6E0D850050890A /* PrographyPhotoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE334EB62B6E0D850050890A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					FE334EBD2B6E0D850050890A = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = FE334EB92B6E0D850050890A /* Build configuration list for PBXProject "PrographyPhotoApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE334EB52B6E0D850050890A;
+			productRefGroup = FE334EBF2B6E0D850050890A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE334EBD2B6E0D850050890A /* PrographyPhotoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE334EBC2B6E0D850050890A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE334ECA2B6E0D860050890A /* Preview Assets.xcassets in Resources */,
+				FE334EC62B6E0D860050890A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE334EBA2B6E0D850050890A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FED984F22B6E85B200E98661 /* RandomPhotoCardView.swift in Sources */,
+				FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */,
+				FED984ED2B6E820000E98661 /* RandomPhotoViewModel.swift in Sources */,
+				FED984EA2B6E41D500E98661 /* PhotoListViewModel.swift in Sources */,
+				FE334EC42B6E0D850050890A /* MainView.swift in Sources */,
+				FED1A75D2B6F0310008C47DD /* NavigationBar.swift in Sources */,
+				FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */,
+				FED1A7642B6F0E4A008C47DD /* PhotoDetailViewModel.swift in Sources */,
+				FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */,
+				FED1A7622B6F0E3C008C47DD /* PhotoDetailView.swift in Sources */,
+				FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FE334ECB2B6E0D860050890A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE334ECC2B6E0D860050890A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		FE334ECE2B6E0D860050890A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PrographyPhotoApp/PrographyPhotoApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PrographyPhotoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = CNGL9PR533;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kirkim.PrographyPhotoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE334ECF2B6E0D860050890A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PrographyPhotoApp/PrographyPhotoApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PrographyPhotoApp/Preview Content\"";
+				DEVELOPMENT_TEAM = CNGL9PR533;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kirkim.PrographyPhotoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE334EB92B6E0D850050890A /* Build configuration list for PBXProject "PrographyPhotoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE334ECB2B6E0D860050890A /* Debug */,
+				FE334ECC2B6E0D860050890A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE334ECD2B6E0D860050890A /* Build configuration list for PBXNativeTarget "PrographyPhotoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE334ECE2B6E0D860050890A /* Debug */,
+				FE334ECF2B6E0D860050890A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FED1A75E2B6F0AD8008C47DD /* PhotoAppCoreData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoAppCoreData;
+		};
+		FED984DE2B6E2CC900E98661 /* PhotoAppAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoAppAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FE334EB62B6E0D850050890A /* Project object */;
+}
