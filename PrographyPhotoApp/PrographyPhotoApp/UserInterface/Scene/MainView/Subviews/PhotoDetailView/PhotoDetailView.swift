@@ -82,6 +82,6 @@ struct PhotoDetailView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding()
-        .background(.black)
+        .background(.black.opacity(0.9))
     }
 }

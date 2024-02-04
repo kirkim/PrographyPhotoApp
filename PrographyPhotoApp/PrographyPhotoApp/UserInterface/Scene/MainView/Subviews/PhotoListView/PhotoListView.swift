@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PhotoListView: View {
     
-    @ObservedObject var viewModel: PhotoListViewModel = .init()
+    @ObservedObject var viewModel: PhotoListViewModel
     
     @State private var columns: [GridItem] = .init(
         repeating: .init(.flexible(), spacing: 13),
@@ -29,6 +29,9 @@ struct PhotoListView: View {
                                     Image(uiImage: data.image)
                                         .frame(width: geometryProxy.size.width / 2, height: (geometryProxy.size.width / 2) * data.ratio)
                                         .clipped()
+                                        .onTapGesture {
+                                            viewModel.tapItem(by: data)
+                                        }
                                 }
                                 Spacer()
                             }
@@ -38,6 +41,9 @@ struct PhotoListView: View {
                                     Image(uiImage: data.image)
                                         .frame(width: geometryProxy.size.width / 2, height: (geometryProxy.size.width / 2) * data.ratio)
                                         .clipped()
+                                        .onTapGesture {
+                                            viewModel.tapItem(by: data)
+                                        }
                                 }
                                 Spacer()
                             }
@@ -53,7 +59,6 @@ struct PhotoListView: View {
                     DragGesture().onChanged({
                         viewModel.calculateScrollViewPosition(by: $0.translation.height)
                     }))
-                
             }
             .onAppear {
                 viewModel.loadPhotos()
@@ -63,5 +68,5 @@ struct PhotoListView: View {
 }
 
 #Preview {
-    PhotoListView()
+    PhotoListView(viewModel: .init(appearDetailPhotoView: .init()))
 }

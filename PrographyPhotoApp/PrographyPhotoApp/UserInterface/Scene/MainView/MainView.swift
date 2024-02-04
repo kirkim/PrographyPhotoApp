@@ -13,33 +13,42 @@ struct MainView: View {
     @ObservedObject var viewModel: MainViewModel = .init()
     
     var body: some View {
-        VStack(spacing: 0) {
-            TabView(selection: $viewModel.viewState.selection) {
-                PhotoListView()
-                    .tag(viewModel.viewState.photoListTag)
-                RandomPhotoView()
-                    .tag(viewModel.viewState.randomPhotoTag)
+        ZStack {
+            VStack(spacing: 0) {
+                TabView(selection: $viewModel.viewState.selection) {
+                    PhotoListView(viewModel: viewModel.photoListViewModel)
+                        .tag(viewModel.viewState.photoListTag)
+                    RandomPhotoView()
+                        .tag(viewModel.viewState.randomPhotoTag)
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                HStack {
+                    Spacer()
+                    
+                    Image("house")
+                        .renderingMode(.template)
+                        .foregroundStyle(viewModel.viewState.selection == .photoList ? .white : .gray)
+                        .onTapGesture { viewModel.tapTabItem(by: .photoList) }
+                    
+                    Spacer()
+                    
+                    Image("cards")
+                        .renderingMode(.template)
+                        .foregroundStyle(viewModel.viewState.selection == .randomPhoto ? .white : .gray)
+                        .onTapGesture { viewModel.tapTabItem(by: .randomPhoto) }
+                    
+                    Spacer()
+                }
+                .padding(.top, 20)
+                .background(.black)
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            HStack {
-                Spacer()
-                
-                Image("house")
-                    .renderingMode(.template)
-                    .foregroundStyle(viewModel.viewState.selection == .photoList ? .white : .gray)
-                    .onTapGesture { viewModel.tapTabItem(by: .photoList) }
-                
-                Spacer()
-                
-                Image("cards")
-                    .renderingMode(.template)
-                    .foregroundStyle(viewModel.viewState.selection == .randomPhoto ? .white : .gray)
-                    .onTapGesture { viewModel.tapTabItem(by: .randomPhoto) }
-                
-                Spacer()
+            if let photoID = viewModel.viewState.appearDetailView {
+                PhotoDetailView(
+                    viewModel: .init(photoID: photoID),
+                    tapPopButton: {
+                        viewModel.viewState.appearDetailView = nil
+                })
             }
-            .padding(.top, 20)
-            .background(.black)
         }
     }
 }
