@@ -6,6 +6,7 @@
 //
 
 import PhotoAppAPI
+import PhotoAppCoreData
 
 import UIKit.UIImage
 
@@ -22,31 +23,43 @@ final class PhotoDetailViewModel: ObservableObject {
     
     @Published var viewState: ViewState? = nil
     
+    private let photoID: String
     private let networkService = PhotoNetworkService()
+    private let bookmarkService = BookmarkMetaDataService()
     
     init(photoID: String) {
-        Task {
-            if let detailPhoto = await networkService.requestDetailPhoto(id: photoID),
-               let imageData = await networkService.loadImage(urlString: detailPhoto.url)
-            {
-                
-                await updateViewState(by: .init(
-                    title: detailPhoto.tags.first ?? "",
-                    userName: detailPhoto.user,
-                    description: detailPhoto.description ?? "",
-                    tags: detailPhoto.tags.prefix(4).reduce("") { $0 + "#\($1) "},
-                    image: UIImage(data: imageData)
-                ))
-            }
-        }
+        self.photoID = photoID
+        
+        loadViewStateData()
     }
     
 }
 
 extension PhotoDetailViewModel {
     
-    func tapBookmarkButton() {
-        
+    private func loadViewStateData() {
+        Task { [weak self] in
+            if
+                let weakSelf = self,
+                let detailPhoto = await weakSelf.networkService.requestDetailPhoto(id: weakSelf.photoID),
+                let imageData = await weakSelf.networkService.loadImage(urlString: detailPhoto.url)
+            {
+                let existBookmarkData = weakSelf.existBookmarkData()
+                await weakSelf.updateViewState(by: .init(
+                    title: detailPhoto.tags.first ?? "",
+                    userName: detailPhoto.user,
+                    description: detailPhoto.description ?? "",
+                    tags: detailPhoto.tags.prefix(4).reduce("") { $0 + "#\($1) "},
+                    image: UIImage(data: imageData),
+                    isBookmark: existBookmarkData
+                ))
+            }
+        }
+    }
+    
+    private func existBookmarkData() -> Bool {
+        let data = try? bookmarkService.find(by: photoID)
+        return data != nil
     }
     
 }
@@ -54,8 +67,34 @@ extension PhotoDetailViewModel {
 extension PhotoDetailViewModel {
     
     @MainActor
+    func tapBookmarkButton() {
+        guard let viewState = viewState else {
+            return
+        }
+        do {
+            if viewState.isBookmark {
+                let removableItem = try bookmarkService.find(by: photoID)
+                try bookmarkService.remove(by: removableItem.id)
+            } else {
+                try bookmarkService.save(by: .init(photoID: photoID))
+            }
+            updateViewState(by: existBookmarkData())
+        } catch {
+            debugPrint(error)
+        }
+    }
+    
+}
+
+@MainActor
+extension PhotoDetailViewModel {
+    
     func updateViewState(by viewState: ViewState) {
         self.viewState = viewState
+    }
+    
+    func updateViewState(by isBookmark: Bool) {
+        self.viewState?.isBookmark = isBookmark
     }
     
 }

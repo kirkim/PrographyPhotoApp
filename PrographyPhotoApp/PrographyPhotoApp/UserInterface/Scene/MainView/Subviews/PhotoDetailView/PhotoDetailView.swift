@@ -34,18 +34,18 @@ struct PhotoDetailView: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    // MARK: 이미지 다운로드 기능 필요
                 }, label: {
                     Image("download")
                         .renderingMode(.template)
                         .foregroundStyle(.white)
                 })
                 Button(action: {
-                    
+                    viewModel.tapBookmarkButton()
                 }, label: {
                     Image("bookmark")
                         .renderingMode(.template)
-                        .foregroundStyle(.white)
+                        .foregroundStyle((viewModel.viewState?.isBookmark) ?? false ? .white : .gray)
                 })
                 .padding(.trailing, 10)
             }
