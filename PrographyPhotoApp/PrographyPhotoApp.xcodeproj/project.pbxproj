@@ -13,6 +13,8 @@
 		FE334ECA2B6E0D860050890A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC92B6E0D860050890A /* Preview Assets.xcassets */; };
 		FED1A75D2B6F0310008C47DD /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A75C2B6F0310008C47DD /* NavigationBar.swift */; };
 		FED1A75F2B6F0AD8008C47DD /* PhotoAppCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = FED1A75E2B6F0AD8008C47DD /* PhotoAppCoreData */; };
+		FED1A7622B6F0E3C008C47DD /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */; };
+		FED1A7642B6F0E4A008C47DD /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */; };
 		FED984DF2B6E2CC900E98661 /* PhotoAppAPI in Frameworks */ = {isa = PBXBuildFile; productRef = FED984DE2B6E2CC900E98661 /* PhotoAppAPI */; };
 		FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E22B6E366C00E98661 /* PhotoListView.swift */; };
 		FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED984E42B6E368600E98661 /* RandomPhotoView.swift */; };
@@ -31,6 +33,8 @@
 		FE334EC92B6E0D860050890A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FE334ED82B6E1BB10050890A /* PhotoAppCoreData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppCoreData; path = ../LocalPackages/PhotoAppCoreData; sourceTree = "<group>"; };
 		FED1A75C2B6F0310008C47DD /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		FED984DC2B6E215D00E98661 /* PhotoAppAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppAPI; path = ../LocalPackages/PhotoAppAPI; sourceTree = "<group>"; };
 		FED984E22B6E366C00E98661 /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
 		FED984E42B6E368600E98661 /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
@@ -149,6 +153,15 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		FED1A7602B6F0E2D008C47DD /* PhotoDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */,
+				FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */,
+			);
+			path = PhotoDetailView;
+			sourceTree = "<group>";
+		};
 		FED984DD2B6E2CC900E98661 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 		FED984E02B6E35CF00E98661 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				FED1A7602B6F0E2D008C47DD /* PhotoDetailView */,
 				FED984E82B6E41C700E98661 /* PhotoListView */,
 				FED984EB2B6E81F000E98661 /* RandomPhotoView */,
 			);
@@ -283,7 +297,9 @@
 				FE334EC42B6E0D850050890A /* MainView.swift in Sources */,
 				FED1A75D2B6F0310008C47DD /* NavigationBar.swift in Sources */,
 				FE334EC22B6E0D850050890A /* PrographyPhotoAppApp.swift in Sources */,
+				FED1A7642B6F0E4A008C47DD /* PhotoDetailViewModel.swift in Sources */,
 				FED984E52B6E368600E98661 /* RandomPhotoView.swift in Sources */,
+				FED1A7622B6F0E3C008C47DD /* PhotoDetailView.swift in Sources */,
 				FED984E32B6E366C00E98661 /* PhotoListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

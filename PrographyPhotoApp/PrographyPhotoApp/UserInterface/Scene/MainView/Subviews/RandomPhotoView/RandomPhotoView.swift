@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RandomPhotoView: View {
 
-    @StateObject var viewModel: RandomPhotoViewModel = .init()
+    @StateObject var viewModel: RandomPhotoViewModel
     
     var body: some View {
         GeometryReader { geometry in
@@ -17,7 +17,11 @@ struct RandomPhotoView: View {
                 NavigationBar()
                 
                 ForEach(viewModel.viewState.photoStack, id: \.id) { photoCard in
-                    RandomPhotoCardView(imageURL: photoCard.url)
+                    RandomPhotoCardView(
+                        imageURL: photoCard.url,
+                        tapInformationIcon: {
+                            viewModel.tapInformationButton(by: photoCard.id)
+                        })
                         .padding(EdgeInsets(top: 100, leading: 50, bottom: 100, trailing: 50))
                         .shadow(radius: 5)
                         .offset(x: photoCard.offsetWidth, y: -abs(photoCard.offsetWidth))

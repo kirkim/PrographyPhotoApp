@@ -10,6 +10,7 @@ import SwiftUI
 struct RandomPhotoCardView: View {
     
     let imageURL: URL?
+    let tapInformationIcon: () -> Void
     
     var body: some View {
         VStack(spacing: 0) {
@@ -28,10 +29,13 @@ struct RandomPhotoCardView: View {
                 
             HStack {
                 Spacer()
+                
                 Image("x")
                     .renderingMode(.template)
                     .foregroundStyle(.gray)
+                
                 Spacer()
+                
                 Circle()
                     .fill(.red)
                     .frame(width: 50)
@@ -40,10 +44,17 @@ struct RandomPhotoCardView: View {
                             .renderingMode(.template)
                             .foregroundStyle(.white)
                     }
+                
                 Spacer()
-                Image("information")
-                    .renderingMode(.template)
-                    .foregroundStyle(.gray)
+                
+                Button(action: {
+                    tapInformationIcon()
+                }, label: {
+                    Image("information")
+                        .renderingMode(.template)
+                        .foregroundStyle(.gray)
+                })
+                
                 Spacer()
             }
             .padding(.vertical, 20)

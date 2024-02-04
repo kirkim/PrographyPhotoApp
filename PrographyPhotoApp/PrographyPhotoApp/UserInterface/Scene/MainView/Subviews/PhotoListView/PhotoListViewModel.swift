@@ -5,13 +5,16 @@
 //  Created by 김기림 on 2/3/24.
 //
 
-import UIKit.UIImage
 import PhotoAppAPI
+
+import Combine
+import UIKit.UIImage
 
 final class PhotoListViewModel: ObservableObject {
     struct CellInfo {
         let image: UIImage
         let ratio: CGFloat
+        let photoID: String
     }
     
     struct GridInfo {
@@ -26,9 +29,16 @@ final class PhotoListViewModel: ObservableObject {
         var appearProgress: Bool = false
     }
     
-    private let networkService: PhotoNetworkService = .init()
     @Published var viewState: ViewState = .init()
+    
+    private let networkService: PhotoNetworkService = .init()
     private var gridInfo: GridInfo = .init()
+    
+    let appearDetailPhotoView: PassthroughSubject<String, Never>
+    
+    init(appearDetailPhotoView: PassthroughSubject<String, Never>) {
+        self.appearDetailPhotoView = appearDetailPhotoView
+    }
     
 }
 
@@ -46,10 +56,10 @@ extension PhotoListViewModel {
                        let image = UIImage(data: imageData) {
                         if weakSelf.gridInfo.leftHeight <= weakSelf.gridInfo.rightHeight {
                             weakSelf.gridInfo.leftHeight += ratio
-                            addLeftGrid.append(.init(image: image, ratio: ratio))
+                            addLeftGrid.append(.init(image: image, ratio: ratio, photoID: data.id))
                         } else {
                             weakSelf.gridInfo.rightHeight += ratio
-                            addRightGrid.append(.init(image: image, ratio: ratio))
+                            addRightGrid.append(.init(image: image, ratio: ratio, photoID: data.id))
                         }
                     }
                 }
@@ -75,6 +85,10 @@ extension PhotoListViewModel {
     
     func updateViewState(by newViewState: ViewState) {
         viewState = newViewState
+    }
+    
+    func tapItem(by info: CellInfo) {
+        appearDetailPhotoView.send(info.photoID)
     }
     
 }

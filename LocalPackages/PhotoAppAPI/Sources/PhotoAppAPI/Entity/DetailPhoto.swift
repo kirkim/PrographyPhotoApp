@@ -9,18 +9,19 @@ import Foundation
 
 public struct DetailPhoto: Decodable {
     
-    let id: String
-    let width: Int
-    let height: Int
-    let url: String
-    let tags: [String]
-    let description: String
+    public let id: String
+    public let width: Int
+    public let height: Int
+    public let url: String
+    public let tags: [String]
+    public let description: String?
+    public let user: String
     
     enum CodingKeys: String, CodingKey {
-        case id, width, height, urls, tags, description
+        case id, width, height, urls, tags, description, user
     }
     
-    enum UrlsCodingKeys: String, CodingKey {
+    enum UrlCodingKeys: String, CodingKey {
         case small
     }
     
@@ -28,15 +29,19 @@ public struct DetailPhoto: Decodable {
         case title
     }
     
+    enum UserCodingKeys: String, CodingKey {
+        case name
+    }
+    
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         width = try container.decode(Int.self, forKey: .width)
         height = try container.decode(Int.self, forKey: .height)
-        description = try container.decode(String.self, forKey: .description)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
         
-        let urlsContainer = try container.nestedContainer(keyedBy: UrlsCodingKeys.self, forKey: .urls)
-        url = try urlsContainer.decode(String.self, forKey: .small)
+        let urlContainer = try container.nestedContainer(keyedBy: UrlCodingKeys.self, forKey: .urls)
+        url = try urlContainer.decode(String.self, forKey: .small)
         
         var tagsArrayForDecoding = try container.nestedUnkeyedContainer(forKey: .tags)
         var tagsArray = [String]()
@@ -46,8 +51,11 @@ public struct DetailPhoto: Decodable {
             let title = try tagContainer.decode(String.self, forKey: .title)
             tagsArray.append(title)
         }
-        
         tags = tagsArray
+        
+        let userContainer = try container.nestedContainer(keyedBy: UserCodingKeys.self, forKey: .user)
+        user = try userContainer.decode(String.self, forKey: .name)
     }
 }
+
 
