@@ -6,6 +6,7 @@
 //
 
 import PhotoAppAPI
+import PhotoAppCoreData
 
 import SwiftUI
 
@@ -23,6 +24,7 @@ final class RandomPhotoViewModel: ObservableObject {
     @Published var viewState: ViewState = .init()
     
     private let networkService = PhotoNetworkService()
+    private let metaDataService = BookmarkMetaDataService()
     
     init() {
         loadCard(count: 2)
@@ -50,6 +52,13 @@ extension RandomPhotoViewModel {
                     viewState.photoStack.append(currentCard)
                 }
             } else {
+                if translation.width > 0 {
+                    try? metaDataService.save(by: .init(
+                        id: .init(),
+                        createdAt: .init(),
+                        photoID: currentCard.id
+                    ))
+                }
                 loadCard(count: 1)
             }
         }
