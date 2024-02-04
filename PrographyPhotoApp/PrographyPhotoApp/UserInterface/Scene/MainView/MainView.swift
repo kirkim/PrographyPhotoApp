@@ -18,7 +18,7 @@ struct MainView: View {
                 TabView(selection: $viewModel.viewState.selection) {
                     PhotoListView(viewModel: viewModel.photoListViewModel)
                         .tag(viewModel.viewState.photoListTag)
-                    RandomPhotoView()
+                    RandomPhotoView(viewModel: viewModel.randomPhotoViewModel)
                         .tag(viewModel.viewState.randomPhotoTag)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))

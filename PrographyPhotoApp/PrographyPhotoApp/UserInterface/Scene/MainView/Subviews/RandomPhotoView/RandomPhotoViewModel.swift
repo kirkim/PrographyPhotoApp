@@ -8,6 +8,7 @@
 import PhotoAppAPI
 import PhotoAppCoreData
 
+import Combine
 import SwiftUI
 
 final class RandomPhotoViewModel: ObservableObject {
@@ -26,7 +27,11 @@ final class RandomPhotoViewModel: ObservableObject {
     private let networkService = PhotoNetworkService()
     private let metaDataService = BookmarkMetaDataService()
     
-    init() {
+    let appearDetailPhotoView: PassthroughSubject<String, Never>
+    
+    init(appearDetailPhotoView: PassthroughSubject<String, Never>) {
+        self.appearDetailPhotoView = appearDetailPhotoView
+        
         loadCard(count: 2)
     }
     
@@ -62,6 +67,14 @@ extension RandomPhotoViewModel {
                 loadCard(count: 1)
             }
         }
+    }
+    
+}
+
+extension RandomPhotoViewModel {
+    
+    func tapInformationButton(by photoID: String) {
+        appearDetailPhotoView.send(photoID)
     }
     
 }

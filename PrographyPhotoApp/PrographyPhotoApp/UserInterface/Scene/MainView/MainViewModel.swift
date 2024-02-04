@@ -27,9 +27,11 @@ final class MainViewModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     
     let photoListViewModel: PhotoListViewModel
+    let randomPhotoViewModel: RandomPhotoViewModel
     
     init() {
         self.photoListViewModel = .init(appearDetailPhotoView: appearDetailPhotoView)
+        self.randomPhotoViewModel = .init(appearDetailPhotoView: appearDetailPhotoView)
         
         bind()
     }
