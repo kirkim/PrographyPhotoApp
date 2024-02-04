@@ -5,6 +5,9 @@
 //  Created by 김기림 on 2/3/24.
 //
 
+import PhotoAppAPI
+import PhotoAppCoreData
+
 import Combine
 import SwiftUI
 
@@ -21,6 +24,11 @@ final class MainViewModel: ObservableObject {
         var appearDetailView: String? = nil
     }
     
+    struct Dependency {
+        let networkSerview: PhotoNetworkService
+        let bookmarkService: BookmarkMetaDataService
+    }
+    
     @Published var viewState: ViewState = .init()
     
     private let appearDetailPhotoView: PassthroughSubject<String, Never> = .init()
@@ -29,8 +37,15 @@ final class MainViewModel: ObservableObject {
     let photoListViewModel: PhotoListViewModel
     let randomPhotoViewModel: RandomPhotoViewModel
     
-    init() {
-        self.photoListViewModel = .init(appearDetailPhotoView: appearDetailPhotoView)
+    let dependency: Dependency
+    
+    init(dependency: Dependency) {
+        self.dependency = dependency
+        self.photoListViewModel = .init(dependency: .init(
+            networkService: dependency.networkSerview,
+            bookmarkService: dependency.bookmarkService,
+            appearDetailPhotoViewSubject: appearDetailPhotoView
+        ))
         self.randomPhotoViewModel = .init(appearDetailPhotoView: appearDetailPhotoView)
         
         bind()

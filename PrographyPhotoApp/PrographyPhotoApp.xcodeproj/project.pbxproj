@@ -80,7 +80,6 @@
 			children = (
 				FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */,
 				FE334EC12B6E0D850050890A /* PrographyPhotoAppApp.swift */,
-				FE334ED32B6E15250050890A /* Service */,
 				FE334ED02B6E14A30050890A /* UserInterface */,
 				FE334ED42B6E15C80050890A /* ReSource */,
 				FE334EC82B6E0D860050890A /* Preview Content */,
@@ -121,27 +120,12 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		FE334ED32B6E15250050890A /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				FE334ED52B6E19CA0050890A /* LocalDB */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		FE334ED42B6E15C80050890A /* ReSource */ = {
 			isa = PBXGroup;
 			children = (
 				FE334EC52B6E0D860050890A /* Assets.xcassets */,
 			);
 			path = ReSource;
-			sourceTree = "<group>";
-		};
-		FE334ED52B6E19CA0050890A /* LocalDB */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LocalDB;
 			sourceTree = "<group>";
 		};
 		FE334ED92B6E1BBD0050890A /* Packages */ = {

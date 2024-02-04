@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import PhotoAppAPI
+import PhotoAppCoreData
 
 @main
 struct PrographyPhotoAppApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(viewModel: .init(dependency: .init(
+                networkSerview: .init(),
+                bookmarkService: .init()
+            )))
         }
     }
 }

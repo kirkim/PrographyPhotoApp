@@ -13,7 +13,7 @@ public struct BookmarkData {
     public let createdAt: Date
     public let photoID: String
     
-    public init(id: UUID, createdAt: Date, photoID: String) {
+    public init(id: UUID = .init(), createdAt: Date = .init(), photoID: String) {
         self.id = id
         self.createdAt = createdAt
         self.photoID = photoID

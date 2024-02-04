@@ -10,7 +10,7 @@ import PhotoAppAPI
 
 struct MainView: View {
     
-    @ObservedObject var viewModel: MainViewModel = .init()
+    @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
         ZStack {
@@ -21,7 +21,7 @@ struct MainView: View {
                     RandomPhotoView(viewModel: viewModel.randomPhotoViewModel)
                         .tag(viewModel.viewState.randomPhotoTag)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
+//                .tabViewStyle(.page(indexDisplayMode: .never))
                 HStack {
                     Spacer()
                     
@@ -44,7 +44,11 @@ struct MainView: View {
             }
             if let photoID = viewModel.viewState.appearDetailView {
                 PhotoDetailView(
-                    viewModel: .init(photoID: photoID),
+                    viewModel: .init(dependency: .init(
+                        networkService: viewModel.dependency.networkSerview,
+                        bookmarkService: viewModel.dependency.bookmarkService,
+                        photoID: photoID
+                    )),
                     tapPopButton: {
                         viewModel.viewState.appearDetailView = nil
                 })
