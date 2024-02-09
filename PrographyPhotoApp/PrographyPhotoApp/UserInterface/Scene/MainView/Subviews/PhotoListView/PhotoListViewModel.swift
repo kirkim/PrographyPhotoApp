@@ -38,6 +38,7 @@ final class PhotoListViewModel: ObservableObject {
     
     @Published var viewState: ViewState = .init()
     
+    private var cancellableSet: Set<AnyCancellable> = []
     private var gridInfo: GridInfo = .init()
     
     private let dependency: Dependency
@@ -45,36 +46,38 @@ final class PhotoListViewModel: ObservableObject {
     init(dependency: Dependency) {
         self.dependency = dependency
         
-        loadBookmarkPhotos()
         loadPhotos()
+        bind()
     }
     
 }
 
 extension PhotoListViewModel {
     
-    func loadBookmarkPhotos() {
-        Task { [weak self] in
-            guard 
-                let weakSelf = self,
-                let bookmarkInfos = try? weakSelf.dependency.bookmarkService.fetch()
-            else { return }
-            
-            var bookmarkCellInfo: [CellInfo] = []
-            for info in bookmarkInfos {
-                if let urlString = await weakSelf.dependency.networkService.requestDetailPhoto(id: info.photoID)?.url,
-                   let imageData = await weakSelf.dependency.networkService.loadImage(urlString: urlString),
-                   let uiImage = UIImage(data: imageData)
-                {
-                    bookmarkCellInfo.append(.init(
-                        image: uiImage,
-                        ratio: .zero,
-                        photoID: info.photoID
-                    ))
+    private func bind() {
+        dependency.bookmarkService.dataSourceSubject
+            .receive(on: DispatchQueue.main)
+            .sink { bookmarkInfos in
+                Task { [weak self] in
+                    guard let weakSelf = self else { return }
+                    
+                    var bookmarkCellInfo: [CellInfo] = []
+                    for info in bookmarkInfos {
+                        if let urlString = await weakSelf.dependency.networkService.requestDetailPhoto(id: info.photoID)?.url,
+                           let imageData = await weakSelf.dependency.networkService.loadImage(urlString: urlString),
+                           let uiImage = UIImage(data: imageData)
+                        {
+                            bookmarkCellInfo.append(.init(
+                                image: uiImage,
+                                ratio: .zero,
+                                photoID: info.photoID
+                            ))
+                        }
+                    }
+                    await weakSelf.updateBookmarkInfos(by: bookmarkCellInfo)
                 }
             }
-            await weakSelf.updateBookmarkInfos(by: bookmarkCellInfo)
-        }
+            .store(in: &cancellableSet)
     }
     
     func loadPhotos() {
@@ -116,11 +119,11 @@ extension PhotoListViewModel {
 @MainActor
 extension PhotoListViewModel {
     
-    func updateViewState(by newViewState: ViewState) {
+    private func updateViewState(by newViewState: ViewState) {
         viewState = newViewState
     }
     
-    func updateBookmarkInfos(by bookmarkInfos: [CellInfo]) {
+    private func updateBookmarkInfos(by bookmarkInfos: [CellInfo]) {
         viewState.bookmarkGrid = bookmarkInfos
     }
     
