@@ -119,11 +119,11 @@ extension PhotoListViewModel {
 @MainActor
 extension PhotoListViewModel {
     
-    func updateViewState(by newViewState: ViewState) {
+    private func updateViewState(by newViewState: ViewState) {
         viewState = newViewState
     }
     
-    func updateBookmarkInfos(by bookmarkInfos: [CellInfo]) {
+    private func updateBookmarkInfos(by bookmarkInfos: [CellInfo]) {
         viewState.bookmarkGrid = bookmarkInfos
     }
     
