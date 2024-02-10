@@ -11,11 +11,6 @@ struct PhotoListView: View {
     
     @ObservedObject var viewModel: PhotoListViewModel
     
-    @State private var columns: [GridItem] = .init(
-        repeating: .init(.flexible(), spacing: 13),
-        count: 2
-    )
-    
     var body: some View {
         GeometryReader { geometryProxy in
             VStack(alignment: .leading, spacing: 20) {
@@ -27,11 +22,14 @@ struct PhotoListView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(viewModel.viewState.bookmarkGrid, id: \.image) { data in
-                            Image(uiImage: data.image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: geometryProxy.size.height / 5)
+                        ForEach(viewModel.viewState.bookmarkGrid, id: \.imageURL) { data in
+                            Color.black
+                                .frame(width: geometryProxy.size.height / 5, height: geometryProxy.size.height / 5)
+                                .overlay {
+                                    LoadableImageView(asyncLoadImage: {
+                                        await viewModel.loadImage(by: data.imageURL)
+                                    })
+                                }
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .onTapGesture {
                                     viewModel.tapItem(by: data)
@@ -39,7 +37,6 @@ struct PhotoListView: View {
                         }
                     }
                 }
-                
                 
                 Text("최신 이미지")
                     .font(.title2)
@@ -49,24 +46,34 @@ struct PhotoListView: View {
                     VStack {
                         HStack(spacing: 10) {
                             VStack {
-                                ForEach(viewModel.viewState.leftGrid, id: \.image) { data in
-                                    Image(uiImage: data.image)
+                                ForEach(viewModel.viewState.leftGrid, id: \.imageURL) { data in
+                                    Color.white
                                         .frame(width: geometryProxy.size.width / 2 - 15, height: (geometryProxy.size.width / 2) * data.ratio)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .onTapGesture {
-                                            viewModel.tapItem(by: data)
+                                        .overlay {
+                                            LoadableImageView(asyncLoadImage: {
+                                                await viewModel.loadImage(by: data.imageURL)
+                                            })
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .onTapGesture {
+                                                viewModel.tapItem(by: data)
+                                            }
                                         }
                                 }
                                 Spacer()
                             }
                             
                             VStack {
-                                ForEach(viewModel.viewState.rightGrid, id: \.image) { data in
-                                    Image(uiImage: data.image)
+                                ForEach(viewModel.viewState.rightGrid, id: \.imageURL) { data in
+                                    Color.white
                                         .frame(width: geometryProxy.size.width / 2 - 15, height: (geometryProxy.size.width / 2) * data.ratio)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        .onTapGesture {
-                                            viewModel.tapItem(by: data)
+                                        .overlay {
+                                            LoadableImageView(asyncLoadImage: {
+                                                await viewModel.loadImage(by: data.imageURL)
+                                            })
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            .onTapGesture {
+                                                viewModel.tapItem(by: data)
+                                            }
                                         }
                                 }
                                 Spacer()
@@ -83,4 +90,32 @@ struct PhotoListView: View {
             .padding(.horizontal, 10)
         }
     }
+}
+
+extension PhotoListView {
+    struct LoadableImageView: View {
+        
+        let asyncLoadImage: () async -> UIImage?
+        
+        @State var image: UIImage?
+        
+        var body: some View {
+            Color.white
+                .overlay {
+                    if let image = image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFill()
+                    }
+                }
+                .setSkeletonView(shouldShow: image == nil)
+                .onAppear {
+                    Task {
+                        image = await asyncLoadImage()
+                    }
+                }
+        }
+    }
+    
+    
 }
