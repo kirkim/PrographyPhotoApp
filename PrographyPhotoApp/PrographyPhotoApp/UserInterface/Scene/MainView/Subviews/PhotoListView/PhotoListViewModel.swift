@@ -13,6 +13,7 @@ import UIKit.UIImage
 
 final class PhotoListViewModel: ObservableObject {
     struct CellInfo {
+        let id: UUID = .init()
         var imageURL: String
         let ratio: CGFloat
         let photoID: String
