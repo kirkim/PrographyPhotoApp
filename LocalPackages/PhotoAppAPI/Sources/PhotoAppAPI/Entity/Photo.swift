@@ -13,9 +13,10 @@ public struct Photo: Decodable {
     public let width: CGFloat
     public let height: CGFloat
     public let url: String
+    public let description: String?
     
     enum CodingKeys: String, CodingKey {
-        case id, width, height, urls
+        case id, width, height, urls, description
     }
     
     enum UrlsCodingKeys: String, CodingKey {
@@ -27,6 +28,7 @@ public struct Photo: Decodable {
         id = try container.decode(String.self, forKey: .id)
         width = try container.decode(CGFloat.self, forKey: .width)
         height = try container.decode(CGFloat.self, forKey: .height)
+        description = try? container.decode(String.self, forKey: .description)
         
         let urlsContainer = try container.nestedContainer(keyedBy: UrlsCodingKeys.self, forKey: .urls)
         url = try urlsContainer.decode(String.self, forKey: .thumb)

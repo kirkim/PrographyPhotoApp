@@ -11,6 +11,7 @@
 		FE334EC42B6E0D850050890A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE334EC32B6E0D850050890A /* MainView.swift */; };
 		FE334EC62B6E0D860050890A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC52B6E0D860050890A /* Assets.xcassets */; };
 		FE334ECA2B6E0D860050890A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE334EC92B6E0D860050890A /* Preview Assets.xcassets */; };
+		FE7BEF8A2B77014300F57DC4 /* SkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BEF892B77014300F57DC4 /* SkeletonView.swift */; };
 		FED1A75D2B6F0310008C47DD /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A75C2B6F0310008C47DD /* NavigationBar.swift */; };
 		FED1A75F2B6F0AD8008C47DD /* PhotoAppCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = FED1A75E2B6F0AD8008C47DD /* PhotoAppCoreData */; };
 		FED1A7622B6F0E3C008C47DD /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */; };
@@ -32,6 +33,7 @@
 		FE334EC72B6E0D860050890A /* PrographyPhotoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrographyPhotoApp.entitlements; sourceTree = "<group>"; };
 		FE334EC92B6E0D860050890A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FE334ED82B6E1BB10050890A /* PhotoAppCoreData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PhotoAppCoreData; path = ../LocalPackages/PhotoAppCoreData; sourceTree = "<group>"; };
+		FE7BEF892B77014300F57DC4 /* SkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonView.swift; sourceTree = "<group>"; };
 		FED1A75C2B6F0310008C47DD /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		FED1A7612B6F0E3C008C47DD /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 		FED1A7632B6F0E4A008C47DD /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				FED1A75C2B6F0310008C47DD /* NavigationBar.swift */,
+				FE7BEF892B77014300F57DC4 /* SkeletonView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE7BEF8A2B77014300F57DC4 /* SkeletonView.swift in Sources */,
 				FED984F22B6E85B200E98661 /* RandomPhotoCardView.swift in Sources */,
 				FED984E72B6E398A00E98661 /* MainViewModel.swift in Sources */,
 				FED984ED2B6E820000E98661 /* RandomPhotoViewModel.swift in Sources */,

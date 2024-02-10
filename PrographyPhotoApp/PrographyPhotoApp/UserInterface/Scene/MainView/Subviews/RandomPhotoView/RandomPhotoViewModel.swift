@@ -83,7 +83,7 @@ extension RandomPhotoViewModel {
     
     func loadCard(count: Int) {
         Task {
-            for index in 0..<count {
+            for _ in 0..<count {
                 if let randomPhoto = await networkService.requestRandomPhoto() {
                     await MainActor.run {
                         viewState.photoStack.insert(

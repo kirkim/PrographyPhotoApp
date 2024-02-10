@@ -5,6 +5,7 @@
 //  Created by 김기림 on 2/3/24.
 //
 
+import Combine
 import CoreData
 
 fileprivate extension Bookmark {
@@ -29,7 +30,11 @@ fileprivate extension Bookmark {
 public final class BookmarkMetaDataService: CoreDataFeature {
     typealias Model = Bookmark
 
-    public init() {}
+    public let dataSourceSubject: CurrentValueSubject<[BookmarkData], Never> = .init([])
+    
+    public init() {
+        try? updateDatasource()
+    }
     
     public func find(by photoID: String) throws -> BookmarkData {
         guard let result = try fetch().filter({ $0.photoID == photoID }).first else {
@@ -55,6 +60,7 @@ public final class BookmarkMetaDataService: CoreDataFeature {
             newItem.photoID = item.photoID
             try viewContextSave()
         }
+        try updateDatasource()
     }
     
     public func update(by item: BookmarkData) throws {
@@ -71,6 +77,7 @@ public final class BookmarkMetaDataService: CoreDataFeature {
                 throw CoreDataError.updateFailure
             }
         }
+        try updateDatasource()
     }
     
     public func remove(by id: UUID) throws {
@@ -85,6 +92,24 @@ public final class BookmarkMetaDataService: CoreDataFeature {
                 try viewContextSave()
             } catch {
                 throw CoreDataError.removeFailure
+            }
+        }
+        try updateDatasource()
+    }
+    
+}
+
+extension BookmarkMetaDataService {
+    
+    private func updateDatasource() throws {
+        Task {
+            try viewContext.performAndWait {
+                do {
+                    let fetchedData = try fetchEntities(sortKeyPath: \Model.createdAt)
+                    dataSourceSubject.send(fetchedData.compactMap({ $0.convertedBookmarkData }))
+                } catch {
+                    throw CoreDataError.fetchFailure(#function)
+                }
             }
         }
     }
