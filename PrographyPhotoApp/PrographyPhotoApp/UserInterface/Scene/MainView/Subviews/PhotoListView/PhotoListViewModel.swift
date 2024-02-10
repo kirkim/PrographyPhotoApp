@@ -13,7 +13,9 @@ import UIKit.UIImage
 
 final class PhotoListViewModel: ObservableObject {
     struct CellInfo {
-        let image: UIImage
+        let title: String?
+        let id: UUID = .init()
+        var imageURL: String
         let ratio: CGFloat
         let photoID: String
     }
@@ -63,12 +65,10 @@ extension PhotoListViewModel {
                     
                     var bookmarkCellInfo: [CellInfo] = []
                     for info in bookmarkInfos {
-                        if let urlString = await weakSelf.dependency.networkService.requestDetailPhoto(id: info.photoID)?.url,
-                           let imageData = await weakSelf.dependency.networkService.loadImage(urlString: urlString),
-                           let uiImage = UIImage(data: imageData)
-                        {
+                        if let urlString = await weakSelf.dependency.networkService.requestDetailPhoto(id: info.photoID)?.url {
                             bookmarkCellInfo.append(.init(
-                                image: uiImage,
+                                title: nil,
+                                imageURL: urlString,
                                 ratio: .zero,
                                 photoID: info.photoID
                             ))
@@ -88,15 +88,22 @@ extension PhotoListViewModel {
                 var addRightGrid: [CellInfo] = []
                 for data in datas {
                     let ratio = data.height / data.width
-                    if let imageData = await weakSelf.dependency.networkService.loadImage(urlString: data.url),
-                       let image = UIImage(data: imageData) {
-                        if weakSelf.gridInfo.leftHeight <= weakSelf.gridInfo.rightHeight {
-                            weakSelf.gridInfo.leftHeight += ratio
-                            addLeftGrid.append(.init(image: image, ratio: ratio, photoID: data.id))
-                        } else {
-                            weakSelf.gridInfo.rightHeight += ratio
-                            addRightGrid.append(.init(image: image, ratio: ratio, photoID: data.id))
-                        }
+                    if weakSelf.gridInfo.leftHeight <= weakSelf.gridInfo.rightHeight {
+                        weakSelf.gridInfo.leftHeight += ratio
+                        addLeftGrid.append(.init(
+                            title: data.description,
+                            imageURL: data.url,
+                            ratio: ratio,
+                            photoID: data.id
+                        ))
+                    } else {
+                        weakSelf.gridInfo.rightHeight += ratio
+                        addRightGrid.append(.init(
+                            title: data.description,
+                            imageURL: data.url,
+                            ratio: ratio,
+                            photoID: data.id
+                        ))
                     }
                 }
                 weakSelf.gridInfo.page += 1
@@ -112,6 +119,17 @@ extension PhotoListViewModel {
         if value < 0 {
             loadPhotos()
         }
+    }
+    
+    func loadImage(by urlString: String) async -> UIImage? {
+        guard
+            let imageData = await dependency.networkService.loadImage(urlString: urlString),
+            let uiImage = UIImage(data: imageData)
+        else {
+            return nil
+        }
+        try? await Task.sleep(nanoseconds: 1000_000_000) // 스켈레톤 뷰 의도적 노출 처리
+        return uiImage
     }
     
 }
