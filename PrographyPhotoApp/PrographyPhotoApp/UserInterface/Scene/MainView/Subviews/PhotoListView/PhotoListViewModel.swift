@@ -123,6 +123,7 @@ extension PhotoListViewModel {
         else {
             return nil
         }
+        try? await Task.sleep(nanoseconds: 1000_000_000) // 스켈레톤 뷰 의도적 노출 처리
         return uiImage
     }
     
