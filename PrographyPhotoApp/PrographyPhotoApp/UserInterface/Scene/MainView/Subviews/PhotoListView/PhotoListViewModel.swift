@@ -13,6 +13,7 @@ import UIKit.UIImage
 
 final class PhotoListViewModel: ObservableObject {
     struct CellInfo {
+        let title: String?
         let id: UUID = .init()
         var imageURL: String
         let ratio: CGFloat
@@ -66,6 +67,7 @@ extension PhotoListViewModel {
                     for info in bookmarkInfos {
                         if let urlString = await weakSelf.dependency.networkService.requestDetailPhoto(id: info.photoID)?.url {
                             bookmarkCellInfo.append(.init(
+                                title: nil,
                                 imageURL: urlString,
                                 ratio: .zero,
                                 photoID: info.photoID
@@ -89,6 +91,7 @@ extension PhotoListViewModel {
                     if weakSelf.gridInfo.leftHeight <= weakSelf.gridInfo.rightHeight {
                         weakSelf.gridInfo.leftHeight += ratio
                         addLeftGrid.append(.init(
+                            title: data.description,
                             imageURL: data.url,
                             ratio: ratio,
                             photoID: data.id
@@ -96,6 +99,7 @@ extension PhotoListViewModel {
                     } else {
                         weakSelf.gridInfo.rightHeight += ratio
                         addRightGrid.append(.init(
+                            title: data.description,
                             imageURL: data.url,
                             ratio: ratio,
                             photoID: data.id

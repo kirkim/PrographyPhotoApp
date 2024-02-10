@@ -23,14 +23,15 @@ struct PhotoListView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(viewModel.viewState.bookmarkGrid, id: \.id) { data in
-                            Color.black
+                            Color.clear
                                 .frame(width: geometryProxy.size.height / 5, height: geometryProxy.size.height / 5)
                                 .overlay {
-                                    LoadableImageView(asyncLoadImage: {
+                                    LoadableImageView(
+                                        title: data.title,
+                                        asyncLoadImage: {
                                         await viewModel.loadImage(by: data.imageURL)
                                     })
                                 }
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .onTapGesture {
                                     viewModel.tapItem(by: data)
                                 }
@@ -49,10 +50,11 @@ struct PhotoListView: View {
                                 Color.white
                                     .frame(width: geometryProxy.size.width / 2 - 15, height: (geometryProxy.size.width / 2) * data.ratio)
                                     .overlay {
-                                        LoadableImageView(asyncLoadImage: {
+                                        LoadableImageView(
+                                            title: data.title,
+                                            asyncLoadImage: {
                                             await viewModel.loadImage(by: data.imageURL)
                                         })
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .onTapGesture {
                                             viewModel.tapItem(by: data)
                                         }
@@ -66,10 +68,11 @@ struct PhotoListView: View {
                                 Color.white
                                     .frame(width: geometryProxy.size.width / 2 - 15, height: (geometryProxy.size.width / 2) * data.ratio)
                                     .overlay {
-                                        LoadableImageView(asyncLoadImage: {
+                                        LoadableImageView(
+                                            title: data.title,
+                                            asyncLoadImage: {
                                             await viewModel.loadImage(by: data.imageURL)
                                         })
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                         .onTapGesture {
                                             viewModel.tapItem(by: data)
                                         }
@@ -92,8 +95,8 @@ struct PhotoListView: View {
 extension PhotoListView {
     struct LoadableImageView: View {
         
+        let title: String?
         let asyncLoadImage: () async -> UIImage?
-        
         @State var image: UIImage?
         
         var body: some View {
@@ -103,8 +106,21 @@ extension PhotoListView {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFill()
+                            .overlay(alignment: .bottom) {
+                                if let title = title {
+                                    Text(title)
+                                        .font(.caption)
+                                        .lineLimit(2)
+                                        .foregroundStyle(.white)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 5)
+                                        .padding(.horizontal, 10)
+                                        .background(.black.opacity(0.5))
+                                }
+                            }
                     }
                 }
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .setSkeletonView(shouldShow: image == nil)
                 .onAppear {
                     Task {
